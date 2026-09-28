@@ -10,26 +10,81 @@ def pig_latin(word):
     # TODO (Part 1): return the Pig Latin form of a single lowercase word.
     #   If it starts with a vowel (a, e, i, o, u): add "way" to the end.
     #   Otherwise: move the first letter to the end and add "ay".
-    pass
+
+    half1 = word[0]
+    half2 = word[1:]
+
+    match half1:
+        case "a"|"e"|"i"|"o"|"u":
+            return word + "way"
+        case _:
+            return half2 + half1 + "ay"
+    # pass
 
 
 def word_lengths(sentence):
     # TODO (Part 2): return a list with the length of each word in `sentence`
     #   (words are separated by spaces).
-    pass
+    newsen = sentence.split(" ")
+    numlist = []
+    # print(newsen)
+
+    if newsen == ['']:
+        return []
+
+    for count in range (len(newsen)):
+        numlist.append(len(newsen[count]))
+        # print(f"numlist: {numlist}")
+
+    # print(f"final numlist: {numlist}\n")
+    return numlist
+    # pass
 
 
 def reverse_words(sentence):
     # TODO (Part 3): return `sentence` with the order of its words reversed.
     #   e.g. "hello world" -> "world hello"
-    pass
+
+    splitsen = sentence.split()
+    newsen = ""
+    for i in range(-1, -len(splitsen)-1, -1):
+        if i != -1:
+            newsen += " " + splitsen[i]
+        else:
+            newsen += splitsen[i]
+
+    return newsen
+
+    # pass
 
 
 def letter_counts(text):
     # TODO (Part 4 - STRETCH, optional): return a dictionary mapping each letter
     #   to how many times it appears in `text`. Ignore case, and ignore anything
     #   that isn't a letter.
-    pass
+    cleantext = text.lower()
+    newtext = ""
+
+    # print(f"cleantext: {cleantext}")
+
+    for i in range(len(cleantext)):
+        if cleantext[i].isalpha():
+            newtext += cleantext[i]
+
+    # print(f"newtext: {newtext}")
+
+    newdict = {}
+
+    for i in range(len(newtext)):
+        if newtext[i] not in newdict:
+            newdict[newtext[i]] = 1
+        else:
+            newdict[newtext[i]] += 1
+
+    # print(f"newdict: {newdict}")
+
+    return newdict
+    # pass
 
 
 def main():
